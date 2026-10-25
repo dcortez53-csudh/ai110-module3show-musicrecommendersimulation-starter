@@ -2,20 +2,19 @@
 
 ## 1. Model Name  
 
-Give your model a short, descriptive name.  
 VibeFinder 1.0  
 
 ---
 
 ## 2. Intended Use  
 
-This recommender is designed for classroom exploration to demonstrate how content-based filtering works. It generates a list of top 5 songs based on a single user's explicity preferences (genre, mood, energy). It assumes the user has a static, well-defined taste profile and is meant for educational simulation, not real-world production.
+This recommender is designed for classroom exploration to demonstrate how content-based filtering works. It generates a list of top 5 songs based on a single user's explicit preferences (genre, mood, energy). It assumes the user has a static, well-defined taste profile and is meant for educational simulation, not real-world production.
 
 ---
 
 ## 3. How the Model Works  
 
-The model looks at three features of each song: genre, mood, and energy. It compares these to the user's preferences. It gives +2.0 points if the genre mathces, +1.0 point if the mood matches, and up to +1.0 point based on how close the song's energy level is to the user's target energy. The model then ranks all the songs by their total score to find the top recommendations. I changed the starter logic by implementing a mathematical gap calculation for energy instead of just a binary high/low check.
+The model looks at three features of each song: genre, mood, and energy. It compares these to the user's preferences. It gives +2.0 points if the genre matches, +1.0 point if the mood matches, and up to +1.0 point based on how close the song's energy level is to the user's target energy. The model then ranks all the songs by their total score to find the top recommendations. I changed the starter logic by implementing a mathematical gap calculation for energy instead of just a binary high/low check.
 
 ---
 
@@ -43,7 +42,7 @@ I tested the system with three distinct profiles: a High-Energy Pop fan, a Deep 
 
 Comparing the Pop and Rock profiles, the outputs shifted drastically. The Pop profile recommended "Gym Hero" (high energy, happy pop), while the Rock profile recommended "Storm Runner" and "Heavy Metal Thunder." This makes sense because the genre and energy weights correctly aligned with those tastes.
 
-However, the Adversarial profile produced a surprising result. Because there are no "sad metal" songs in the dataset, the system abandoned the metal genre entirely and recommended "Symphony of Sorrow" (classical/sad) and "Whiskey Tears" (country/sad). It prioritized the mood and energy preferences over the genre preference because the math for the mood (+1.0) and energy (+1.0) outweighed the missing genre points (0+).
+However, the Adversarial profile produced a surprising result. Because there are no "sad metal" songs in the dataset, the system abandoned the metal genre entirely and recommended "Symphony of Sorrow" (classical/sad) and "Whiskey Tears" (country/sad). It prioritized the mood and energy preferences over the genre preference because the math for the mood (+1.0) and energy (+1.0) outweighed the missing genre points (0).
 
 During a data experiment, I temporarily removed the "Mood Match" logic. The recommendation for the Pop profile changed significantly; songs with the correct energy but completely wrong moods (like "Night Drive Loop" by Neon Echo) started appearing in the top results. This proved that the mood weight is critical for keeping the recommendations emotionally relevant to the user.
 
@@ -51,10 +50,10 @@ During a data experiment, I temporarily removed the "Mood Match" logic. The reco
 
 ## 8. Future Work  
 
-I would add more features like "valence" and "danceabilitiy" to the scoring logic. I would improve diversity by penalizing songs if the same artist appears multiple times in the top results. I would also handle complex user tastes by allowing multiple favorite genres.
+I would add more features like "valence" and "danceability" to the scoring logic. I would improve diversity by penalizing songs if the same artist appears multiple times in the top results. I would also handle complex user tastes by allowing multiple favorite genres.
 
 ---
 
 ## 9. Personal Reflection  
 
-I learned that simple math can actually feel like a real recommendation system. It was interesting to see how changing just one weight (like  removing the mood check) completely changed the output. It changed how I thnk about Spotify; even simple algorithms can create a filter bubble if they weight one feature too heavily.
+I learned that simple math can actually feel like a real recommendation system. It was interesting to see how changing just one weight (like removing the mood check) completely changed the output. It changed how I think about Spotify; even simple algorithms can create a filter bubble if they weight one feature too heavily.
